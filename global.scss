@@ -12,6 +12,12 @@ $colors:("purple": "#6d1ba3",
     "purpleLight": "#7d3ca8",
     "lightGrey": "#eeeeee",
     "white": "#ffffff",
+    "pink": "#931c51",
+    "pinkLight": "#c93a7a",
+    "pinkDark": "#800b3f",
+    "blue": "#3390c9",
+    "blueLight": "#3898EC",
+    "blueDark": "#0172b6",
 );
 
 @each $colorName,
@@ -33,7 +39,7 @@ $colorValue in $colors {
 
 body {
     @extend .bg-lightGrey;
-    @extend .text-purpleLight;
+    @extend .text-pinkDark;
     margin: 0;
     padding: 0;
 }
@@ -55,68 +61,78 @@ body {
         z-index: 2000;
     }
 
-    .content{
-        width:100%;
+    .content {
+        width: 100%;
         margin-left: rem(0px);
         transition: all ease $easeTime;
     }
-    &.active{
-        .sideMenu{
+
+    &.active {
+        .sideMenu {
             transform: translateX(0);
         }
     }
 }
 
 
-@media (min-width: 992px){
-    .wrapper{
-        .sideMenu{
-            transform:translateX(0);
+@media (min-width: 992px) {
+    .wrapper {
+        .sideMenu {
+            transform: translateX(0);
         }
+
         .content {
             margin-left: rem(200px);
         }
-        &.active{
-            .sideMenu{
+
+        &.active {
+            .sideMenu {
                 width: rem(80px);
-                .nav-link{
-                    text-align:center;
-                    .icon{
-                        margin-right:0;
+
+                .nav-link {
+                    text-align: center;
+
+                    .icon {
+                        margin-right: 0;
                     }
-                    .text{
+
+                    .text {
                         display: none;
                     }
                 }
             }
+
             .content {
                 margin-left: rem(80px);
             }
         }
     }
-    
+
 }
 
-.nav-link{
-    display:block;
+.nav-link {
+    display: block;
     white-space: nowrap;
-    .icon{
-        margin-right:rem(4px);
+
+    .icon {
+        margin-right: rem(4px);
         font-size: rem(30px);
         vertical-align: middle;
-        height:rem(32px);
-        width:rem(32px);
+        height: rem(32px);
+        width: rem(32px);
         @extend .text-lightGrey;
-        display:inline-flex;
+        display: inline-flex;
         justify-content: center;
         align-items: center;
     }
-    .text{
+
+    .text {
         font-size: rem(14px);
         @extend .text-white;
     }
+
     &:hover,
-    &.active{
-        @extend .bg-purple;
+    &.active {
+        @extend .bg-pinkDark;
     }
 }

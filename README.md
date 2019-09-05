@@ -6,5 +6,3 @@
 * Started UI 
   * Built Sidebar
   * Put in basic colors
-  * Put in basic colors
-
