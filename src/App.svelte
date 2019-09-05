@@ -14,7 +14,7 @@
   <button class="navbar-toggler sideMenuToggler" type="button">
     <span class="navbar-toggler-icon" />
   </button>
-  <a class="navbar-brand" href="#">The House of Providence</a>
+  <a class="navbar-brand" href="/">The House of Providence</a>
   <button
     class="navbar-toggler"
     type="button"
@@ -32,7 +32,7 @@
 
         <a
           class="nav-link dropdown-toggle"
-          href="#"
+          href="/"
           id="navbarDropdown"
           role="button"
           data-toggle="dropdown"
@@ -41,9 +41,9 @@
           {name}
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="#">Profile</a>
+          <a class="dropdown-item" href="/">Profile</a>
           <div class="dropdown-divider" />
-          <a class="dropdown-item" href="#">Log Out</a>
+          <a class="dropdown-item" href="/">Log Out</a>
         </div>
       </li>
 
@@ -56,37 +56,37 @@
     <div class="sidebar">
       <ul class="navbar-nav">
         <li class="nav-item">
-          <a href="#" class="nav-link">
+          <a href="/" class="nav-link">
             <i class="material-icons icon">dashboard</i>
             <span class="text">Dashboard</span>
           </a>
         </li>
         <li class="nav-item">
-          <a href="#" class="nav-link">
+          <a href="/" class="nav-link">
             <i class="material-icons icon">accessibility_new</i>
             <span class="text">Human Resources</span>
           </a>
         </li>
         <li class="nav-item">
-          <a href="#" class="nav-link">
+          <a href="/" class="nav-link">
             <i class="material-icons icon">attach_money</i>
             <span class="text">Finance</span>
           </a>
         </li>
         <li class="nav-item">
-          <a href="#" class="nav-link">
+          <a href="/" class="nav-link">
             <i class="material-icons icon">school</i>
             <span class="text">Training</span>
           </a>
         </li>
         <li class="nav-item">
-          <a href="#" class="nav-link">
+          <a href="/" class="nav-link">
             <i class="material-icons icon">settings</i>
             <span class="text">Settings</span>
           </a>
         </li>
         <li class="nav-item">
-          <a href="#" class="nav-link sideMenuToggler">
+          <a href="/" class="nav-link sideMenuToggler">
             <i class="material-icons icon">view_list</i>
             <span class="text">Expand</span>
           </a>
