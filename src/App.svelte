@@ -41,10 +41,9 @@
           {name}
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="#">Action</a>
-          <a class="dropdown-item" href="#">Another action</a>
+          <a class="dropdown-item" href="#">Profile</a>
           <div class="dropdown-divider" />
-          <a class="dropdown-item" href="#">Something else here</a>
+          <a class="dropdown-item" href="#">Log Out</a>
         </div>
       </li>
 
@@ -102,8 +101,20 @@
         <div class="row px-3">
           <div class="col-12">
             <!-- Route Start -->
-				<div class="bg-white row p-4">
+				<div class="bg-white row p-4 mb-4">
 					<div class="col-12">
+						<h4 class="mb-2">
+							Dashboard
+						</h4>
+					</div>					
+				</div>				
+				<div class=" row  ">
+					<div class="bg-white col-3 p-4">
+						<h4 class="mb-2">
+							Dashboard
+						</h4>
+					</div>					
+					<div class="col-9 p-4 bg-white">
 						<h4 class="mb-2">
 							Dashboard
 						</h4>
