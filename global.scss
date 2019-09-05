@@ -59,6 +59,33 @@ body {
         transition: all ease $easeTime;
         transform: translateX(-100%);
         z-index: 2000;
+
+        .nav-link {
+            display: block;
+            white-space: nowrap;
+
+            .icon {
+                margin-right: rem(4px);
+                font-size: rem(30px);
+                vertical-align: middle;
+                height: rem(32px);
+                width: rem(32px);
+                @extend .text-lightGrey;
+                display: inline-flex;
+                justify-content: center;
+                align-items: center;
+            }
+
+            .text {
+                font-size: rem(14px);
+                @extend .text-white;
+            }
+
+            &:hover,
+            &.active {
+                @extend .bg-pinkDark;
+            }
+        }
     }
 
     .content {
@@ -110,29 +137,3 @@ body {
 
 }
 
-.nav-link {
-    display: block;
-    white-space: nowrap;
-
-    .icon {
-        margin-right: rem(4px);
-        font-size: rem(30px);
-        vertical-align: middle;
-        height: rem(32px);
-        width: rem(32px);
-        @extend .text-lightGrey;
-        display: inline-flex;
-        justify-content: center;
-        align-items: center;
-    }
-
-    .text {
-        font-size: rem(14px);
-        @extend .text-white;
-    }
-
-    &:hover,
-    &.active {
-        @extend .bg-pinkDark;
-    }
-}

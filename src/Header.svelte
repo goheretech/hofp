@@ -1,17 +1,11 @@
 <script>
 	import {Link} from 'svero'
-	import { db, auth, googleProvider } from './firebase';
-	import { authState } from 'rxfire/auth';
+	import firebase, {app, loggedIn$, logIn, logOut } from './firebase'
 
-	let user;
+	let user = loggedIn$;
+	
 	
 
-	//Login Google
-	function login() {
-		auth.signInWithPopup(googleProvider);
-		console.log('Logging in:{user}');
-		
-    }
 </script>
 
 <nav class="navbar navbar-expand-lg navbar-dark bg-pinkDark fixed-top">
@@ -35,20 +29,30 @@
 
 				<a
 				class="nav-link dropdown-toggle"
-				href="/dash"
+				href="javascript:void(0)"
 				id="navbarDropdown"
 				role="button"
 				
 				data-toggle="dropdown"
 				aria-haspopup="true"
 				aria-expanded="false">
-				Sign In
+				
+				{#if $user}
+					Welcome, {$user.displayName}
+				{:else}
+					Sign In
+				{/if}
 				</a>
 				<div class="dropdown-menu" aria-labelledby="navbarDropdown">
-				<a class="dropdown-item" href="/profile">Profile</a>
-				<button class="dropdown-item" on:click={login} >Login</button>
-				<div class="dropdown-divider" />
-				<a class="dropdown-item" href="/signout">Log Out</a>
+				
+				{#if $user}
+					<a class="dropdown-item" href="/profile">Profile</a>
+					<div class="dropdown-divider" />
+					<button class="dropdown-item" on:click={logOut} >Log Out</button>
+				{:else}
+					<button class="dropdown-item" on:click={logIn} >Login with Google</button>
+				{/if}			
+				
 				</div>
 			</li>
 		</ul>

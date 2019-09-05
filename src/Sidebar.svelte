@@ -24,7 +24,7 @@
 			</Link>
 			</li>
 			<li class="nav-item">
-			<Link href="#" className="nav-link">
+			<Link href="javascript:void(0)" className="nav-link">
 				<i class="material-icons icon">school</i>
 				<span class="text">Training</span>
 			</Link>
@@ -36,10 +36,10 @@
 			</Link>
 			</li>
 			<li class="nav-item">
-			<Link href="#" className="nav-link sideMenuToggler">
+			<a href="javascript:void(0)" class="nav-link sideMenuToggler">
 				<i class="material-icons icon">view_list</i>
 				<span class="text">Expand</span>
-			</Link>
+			</a>
 			</li>
 
 		</ul>
