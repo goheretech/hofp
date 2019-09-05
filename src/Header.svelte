@@ -35,7 +35,7 @@
 
 				<a
 				class="nav-link dropdown-toggle"
-				href="#"
+				href="/dash"
 				id="navbarDropdown"
 				role="button"
 				
