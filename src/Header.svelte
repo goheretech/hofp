@@ -1,5 +1,17 @@
 <script>
-    import {Link} from 'svero'
+	import {Link} from 'svero'
+	import { db, auth, googleProvider } from './firebase';
+	import { authState } from 'rxfire/auth';
+
+	let user;
+	
+
+	//Login Google
+	function login() {
+		auth.signInWithPopup(googleProvider);
+		console.log('Logging in:{user}');
+		
+    }
 </script>
 
 <nav class="navbar navbar-expand-lg navbar-dark bg-pinkDark fixed-top">
@@ -26,13 +38,15 @@
 				href="#"
 				id="navbarDropdown"
 				role="button"
+				
 				data-toggle="dropdown"
 				aria-haspopup="true"
 				aria-expanded="false">
-				Jack LeMay
+				Sign In
 				</a>
 				<div class="dropdown-menu" aria-labelledby="navbarDropdown">
 				<a class="dropdown-item" href="/profile">Profile</a>
+				<button class="dropdown-item" on:click={login} >Login</button>
 				<div class="dropdown-divider" />
 				<a class="dropdown-item" href="/signout">Log Out</a>
 				</div>
