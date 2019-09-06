@@ -3,21 +3,46 @@
   import Header from "./Header.svelte";
   import Sidebar from "./Sidebar.svelte";
   import Dashboard from "./pages/Dashboard.svelte";
+  //HR
   import HR from "./pages/HumanResources.svelte";
+
+    //Onboarding
+    import Register from "./pages/hr/Register.svelte";
+    import Onboard1 from "./pages/hr/Onboard1.svelte"
+    import Onboard2 from "./pages/hr/Onboard2.svelte"
+
+  //FInance
   import Finances from "./pages/Finances.svelte";
   import Profile from "./pages/Profile.svelte";
   import Settings from "./pages/Settings.svelte";
-  import {loggedIn$} from './firebase';
-  import {checkReg, mult, success} from './CheckRegistration';
+  import { loggedIn$, employees } from "./firebase";
+  import { mult } from "./CheckRegistration";
 
   let reg;
   const user = loggedIn$;
-  $: if ($user)  { console.log($user.uid, checkReg($user.uid));}
-  
-  $: console.log(`Success: ${success}`);
+
+  $: if ($user) {
+    checkReg($user.uid);
+  }
+
+  $: console.log(`Registered: ${reg}`);
+
+  function checkReg(uid) {
+    employees.forEach(emp => {
+      emp.forEach(e => {
+        if (e.pos == uid) {
+          reg = true;
+          console.log(reg);
+        } else {
+          reg = false;
+          console.log(reg);
+        }
+      });
+    });
+  }
 </script>
 
-<Header user={user}/>
+<Header {user} />
 <div class="wrapper d-flex ">
   <Sidebar />
   <div class="content">
@@ -27,13 +52,20 @@
           <div class="col-12">
             <!-- Route Start -->
             <Router>
-              <Route path="*" user={user} component={Dashboard} />
-              {#if $user != null}
-              <Route path="/hr" component={HR}  user={user}/>
-              <Route path="/finances" user={user} component={Finances} />
-              <Route path="/profile" user={user} component={Profile} />
-              <Route path="/settings" user={user} component={Settings} />
+              {#if reg != true}                  
+                  <Route path="*" {user} component={Register} />                 
+                  <Route path="/onboard1" component={Onboard1} {user} />
+                  <Route path="/onboard2" component={Onboard2} {user} />
+              {:else}
+                  
+                    <Route path="*" {user} component={Dashboard} />                 
+                    <Route path="/hr" component={HR} {user} />
+                    <Route path="/finances" {user} component={Finances} />
+                    <Route path="/profile" {user} component={Profile} />
+                    <Route path="/settings" {user} component={Settings} />
               {/if}
+              
+              
             </Router>
             <!-- End of Routes -->
           </div>

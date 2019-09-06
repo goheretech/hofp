@@ -1,6 +1,9 @@
 # The House of Providence - System Build
 [Linode Server](http://45.33.88.248)
 ### Changelog
+#### v0.0.6
+* Onboarding System initialized
+* Need to create entries in firestore
 #### v0.0.5
 * Send Email on Registration Working
 * Added Favicon
