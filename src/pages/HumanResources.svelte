@@ -1,13 +1,12 @@
 <script>
-    import {collectionData, firestore, sendEmail} from "../firebase.js"
-    import { startWith } from "rxjs/operators";
-    const employeeRef = firestore.collection('users');
-    const departmentRef = firestore.collection('dept');
-
+    import {sendEmail, employees, departments} from "../firebase.js"
+    import {checkReg} from '../CheckRegistration.js'
     export let user;
+    
+    
 
-    const employees = collectionData(employeeRef.orderBy('lName', 'desc')).pipe(startWith([]));
-    const departments = collectionData(departmentRef.orderBy('name', 'desc')).pipe(startWith([]));
+    
+
     
 
 </script>

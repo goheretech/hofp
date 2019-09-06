@@ -3,8 +3,8 @@ import 'firebase/firestore';
 import 'firebase/functions';
 import firebase from 'firebase/app';
 import { authState } from 'rxfire/auth';
-import { collectionData } from 'rxfire/firestore'
-import {map } from 'rxjs/operators'
+import { collectionData} from 'rxfire/firestore'
+import {map, startWith } from 'rxjs/operators'
 
 
 // Your web app's Firebase configuration
@@ -17,10 +17,6 @@ const app = firebase.initializeApp({
     messagingSenderId: '605608112562',
     appId: '1:605608112562:web:db5cd826ecd7269f'
 });
-
-
-
-const functions = firebase.functions();
 
 
 function sendEmail() {
@@ -44,6 +40,18 @@ const firestore = firebase.firestore(app);
 const auth = firebase.auth(app);
 const loggedIn$ = authState(auth).pipe(map(user => (user ? user : null)));
 
-export {app, auth, firestore, collectionData, loggedIn$, logIn, logOut, sendEmail};
+// //Databases
+const employeeRef = firestore.collection('users');
+const departmentRef = firestore.collection('dept');
+const employees = collectionData(employeeRef.orderBy('lName', 'desc')).pipe(
+    startWith([])
+);
+const departments = collectionData(departmentRef.orderBy('name', 'desc')).pipe(
+    startWith([])
+);
+
+
+
+export {app, auth, firestore, collectionData, loggedIn$, logIn, logOut, sendEmail, employees, departments};
 
 export default firebase;

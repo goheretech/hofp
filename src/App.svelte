@@ -7,10 +7,13 @@
   import Finances from "./pages/Finances.svelte";
   import Profile from "./pages/Profile.svelte";
   import Settings from "./pages/Settings.svelte";
-  import {loggedIn$} from './firebase'
-  
-  const user = loggedIn$;
+  import {loggedIn$} from './firebase';
+  import {checkReg} from './CheckRegistration';
 
+  const user = loggedIn$;
+  let reg = true;
+    $: if ($user)  { reg = checkReg($user.uid);}
+    $: console.log(reg);
   
 </script>
 
@@ -25,10 +28,12 @@
             <!-- Route Start -->
             <Router>
               <Route path="*" user={user} component={Dashboard} />
+              {#if $user != null}
               <Route path="/hr" component={HR}  user={user}/>
               <Route path="/finances" user={user} component={Finances} />
               <Route path="/profile" user={user} component={Profile} />
               <Route path="/settings" user={user} component={Settings} />
+              {/if}
             </Router>
             <!-- End of Routes -->
           </div>
