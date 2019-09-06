@@ -68,5 +68,5 @@
       </div>
     </div>
   </form>
-  <Link className="btn bg-pink text-white btn-lg" href="/onboard2">Next Page</Link>
+  <Link className="btn bg-pink text-white btn-lg" href="/onboard2">Next Page 2</Link>
 </div>
