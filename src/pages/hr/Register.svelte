@@ -57,7 +57,7 @@
       veritatis earum suscipit iste. Ipsum esse animi earum, voluptatibus quia
       iste rem accusamus deleniti dolorem dicta cum.
     </p>
-    <button class="btn btn-lg bg-pink" on:click={logIn} role="button">
+    <button class="btn btn-lg bg-pink text-white" on:click={logIn} role="button">
       Log In
     </button>
   {/if}
