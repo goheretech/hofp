@@ -8,13 +8,13 @@
   import Profile from "./pages/Profile.svelte";
   import Settings from "./pages/Settings.svelte";
   import {loggedIn$} from './firebase';
-  import {checkReg} from './CheckRegistration';
+  import {checkReg, mult, success} from './CheckRegistration';
 
+  let reg;
   const user = loggedIn$;
-  let reg = true;
-    $: if ($user)  { reg = checkReg($user.uid);}
-    $: console.log(reg);
+  $: if ($user)  { console.log($user.uid, checkReg($user.uid));}
   
+  $: console.log(`Success: ${success}`);
 </script>
 
 <Header user={user}/>
