@@ -41,7 +41,7 @@ const loggedIn$ = authState(auth).pipe(map(user => (user ? user : null)));
 // //Databases
 const employeeRef = firestore.collection('users');
 const departmentRef = firestore.collection('dept');
-const employees = collectionData(employeeRef.orderBy('lName', 'desc')).pipe(
+const employees = collectionData(employeeRef.orderBy('pos', 'desc')).pipe(
     startWith([])
 );
 const departments = collectionData(departmentRef.orderBy('name', 'desc')).pipe(
