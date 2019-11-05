@@ -27,16 +27,18 @@
   let completed = false;
   const user = loggedIn$;
 
+  console.log('THis is working');
+  
   $: if ($user) {
     checkReg($user.uid);
   }
 
   $: console.log(`Registered: ${reg} | Approved: ${approv}`);
-  $: if (e.pConfirm.confirmedBackground == true) {
-      console.log('Application Finished');
+  // $: if (e.pConfirm.confirmedBackground == true) {
+  //     console.log('Application Finished');
       
-      stage = 3;
-    }
+  //     stage = 3;
+  //   }
   function checkReg(uid) {
     employees.forEach(emp => {
       emp.forEach(e => {
