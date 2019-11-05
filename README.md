@@ -2,7 +2,7 @@
 [Linode Server](http://45.33.88.248)
 ### Changelog
 #### v0.0.6
-* Onboarding System initialized
+* Onboarding System initialized - test
 * Need to create entries in firestore
 #### v0.0.5
 * Send Email on Registration Working
