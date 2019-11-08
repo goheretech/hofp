@@ -15,7 +15,7 @@
     let users = firestore.collection('users').where('pos', '==', $user.uid).get() .then(snapshot => {
       snapshot.forEach(doc => {
         
-        firestore.collection('users').doc(doc.id).set({pConfirm}, {merge: true}).then(()=>{
+        firestore.collection('users').doc(doc.id).set({pConfirm, stage:2}, {merge: true}).then(()=>{
           console.log('Done');
         });
         

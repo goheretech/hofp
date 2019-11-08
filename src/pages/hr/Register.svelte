@@ -17,7 +17,7 @@
     try {
       await firestore
         .collection("users")
-        .add({ ...userInfo, regDate: new Date() });
+        .add({ ...userInfo, regDate: new Date(), stage: 1 });
     } catch (error) {
       console.log(error);
     }

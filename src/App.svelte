@@ -34,26 +34,20 @@
   }
 
   $: console.log(`Registered: ${reg} | Approved: ${approv}`);
-  // $: if (e.pConfirm.confirmedBackground == true) {
-  //     console.log('Application Finished');
-      
-  //     stage = 3;
-  //   }
+  
   function checkReg(uid) {
     employees.forEach(emp => {
       emp.forEach(e => {
         
-        if (e.approved == true && e.pos == uid) {
-          stage = 3;
-          approv = true;
-          reg = true;
-        }else if(e.pos == uid){
-          stage = 2;
+        console.log(e.pos, uid);
+        
+         if(e.pos == uid){
 
-          
-          reg = true;
-          completed = e.pConfirm.confirmedBackground;
-          console.log('Completed:', e.pConfirm.confirmedBackground);
+
+           stage = e.stage;
+            console.log('Stage: ',stage);
+            
+         
         }
       });
     });
@@ -70,45 +64,28 @@
           <div class="col-12">
             <!-- Route Start -->
             <Router>
-              {#if stage == 0}
-                Stage = {stage}
+              
+              
+              {#if stage ==0}
+                  <Register />
               {/if}
-              {#if stage == 1}
-                Stage = {stage}
+              {#if stage ==1}
+                  <Route path="*" {reg} component={Onboard1} />
+                  <Route path="/onboard2" component={Onboard2} {user} />
+                  <Route path="/onboard3" component={Onboard3} {user} />
+                  <Route path="/confirm" component={Confirm} {user} />
               {/if}
               {#if stage == 2}
-                Stage = {stage}
+                  <Route path="*" component={Confirm}/> 
               {/if}
-              {#if stage == 3}
-                Stage = {stage}
-              {/if}
-              {#if stage == 4}
-                Stage = {stage}
-              {/if}
-
-              {#if approv != true}                  
-                  {#if reg != true}
-                    <Register />
-                  {:else}
-                      {#if completed == true}
-                        <Route path="*" component={Confirm}/>                        
-                      {:else}
-                        <Route path="*" {reg} component={Onboard1} />
-                        <Route path="/onboard2" component={Onboard2} {user} />
-                        <Route path="/onboard3" component={Onboard3} {user} />
-                        <Route path="/confirm" component={Confirm} {user} />
-                      {/if}
-                    
-                  {/if}
-                  
-              {:else}
-                  
-                    <Route path="*" {user} component={Dashboard} />                 
+              {#if stage ==3}
+                   <Route path="*" {user} component={Dashboard} />                 
                     <Route path="/hr" component={HR} {user} />
                     <Route path="/finances" {user} component={Finances} />
                     <Route path="/profile" {user} component={Profile} />
                     <Route path="/settings" {user} component={Settings} />
               {/if}
+              
               
               
             </Router>

@@ -6,6 +6,8 @@ import { authState } from 'rxfire/auth';
 import { collectionData } from 'rxfire/firestore';
 import { map, startWith } from 'rxjs/operators';
 
+
+
 // Your web app's Firebase configuration
 const app = firebase.initializeApp({
     apiKey: 'AIzaSyBH2rmnyxYvCJUxFniY_UV5kIKdGcUpoVk',
@@ -17,6 +19,7 @@ const app = firebase.initializeApp({
     appId: '1:605608112562:web:db5cd826ecd7269f'
 });
 
+
 function sendEmail() {
     const callable = functions.httpsCallable('genericEmail');
     return callable({
@@ -24,6 +27,7 @@ function sendEmail() {
         subject: 'Email from Svelte'
     }).then(console.log);
 }
+
 
 const logIn = () => {
     const authProvider = new firebase.auth.GoogleAuthProvider();
@@ -41,24 +45,34 @@ const loggedIn$ = authState(auth).pipe(map(user => (user ? user : null)));
 // //Databases
 const employeeRef = firestore.collection('users');
 const departmentRef = firestore.collection('dept');
+const prospects = collectionData(employeeRef.where('stage', '<', '3')).pipe(
+    startWith([])
+    );
+
+    const curEmployees = collectionData(employeeRef.where('stage', '==', '3')).pipe(
+        startWith([])
+        );
 const employees = collectionData(employeeRef.orderBy('pos', 'desc')).pipe(
     startWith([])
-);
-const departments = collectionData(departmentRef.orderBy('name', 'desc')).pipe(
-    startWith([])
-);
-
-export {
-    app,
-    auth,
-    firestore,
-    collectionData,
-    loggedIn$,
-    logIn,
-    logOut,
-    sendEmail,
-    employees,
-    departments
-};
-
-export default firebase;
+    );
+    const departments = collectionData(departmentRef.orderBy('name', 'desc')).pipe(
+        startWith([])
+        );
+        
+        export {
+            app,
+            auth,
+            firestore,
+            collectionData,
+            loggedIn$,
+            logIn,
+            logOut,
+            sendEmail,
+            employees,
+            curEmployees,
+            prospects,
+            departments
+        };
+        
+        export default firebase;
+        
